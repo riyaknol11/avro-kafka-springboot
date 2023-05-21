@@ -13,9 +13,9 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2669643944539634380L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.knoldus.model\",\"fields\":[{\"name\":\"id\",\"type\":\"int\",\"doc\":\"Id of the order\"},{\"name\":\"name\",\"type\":\"string\",\"Name\":\"Name of the order\"},{\"name\":\"storeName\",\"type\":\"string\"}]}");
+public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -1538338742664082626L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.knoldus.model\",\"fields\":[{\"name\":\"id\",\"type\":\"int\",\"doc\":\"Id of the order\"},{\"name\":\"name\",\"type\":\"string\",\"Name\":\"Name of the order\"},{\"name\":\"nickName\",\"type\":\"string\",\"doc\":\"Optional field represents the nickname of the customer\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"city\",\"type\":\"string\",\"doc\":\"city of the order\"},{\"name\":\"street\",\"type\":\"string\",\"doc\":\"Exact street address of the customer\"},{\"name\":\"zip\",\"type\":\"int\"}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"}]}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -74,7 +74,10 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
   /** Id of the order */
   @Deprecated public int id;
   @Deprecated public java.lang.CharSequence name;
-  @Deprecated public java.lang.CharSequence storeName;
+  /** Optional field represents the nickname of the customer */
+  @Deprecated public java.lang.CharSequence nickName;
+  @Deprecated public com.knoldus.model.Store store;
+  @Deprecated public java.util.List<com.knoldus.model.OrderLineItem> orderLineItems;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -87,12 +90,16 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
    * All-args constructor.
    * @param id Id of the order
    * @param name The new value for name
-   * @param storeName The new value for storeName
+   * @param nickName Optional field represents the nickname of the customer
+   * @param store The new value for store
+   * @param orderLineItems The new value for orderLineItems
    */
-  public CoffeeOrder(java.lang.Integer id, java.lang.CharSequence name, java.lang.CharSequence storeName) {
+  public CoffeeOrder(java.lang.Integer id, java.lang.CharSequence name, java.lang.CharSequence nickName, com.knoldus.model.Store store, java.util.List<com.knoldus.model.OrderLineItem> orderLineItems) {
     this.id = id;
     this.name = name;
-    this.storeName = storeName;
+    this.nickName = nickName;
+    this.store = store;
+    this.orderLineItems = orderLineItems;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -102,7 +109,9 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
     switch (field$) {
     case 0: return id;
     case 1: return name;
-    case 2: return storeName;
+    case 2: return nickName;
+    case 3: return store;
+    case 4: return orderLineItems;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -113,7 +122,9 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
     switch (field$) {
     case 0: id = (java.lang.Integer)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
-    case 2: storeName = (java.lang.CharSequence)value$; break;
+    case 2: nickName = (java.lang.CharSequence)value$; break;
+    case 3: store = (com.knoldus.model.Store)value$; break;
+    case 4: orderLineItems = (java.util.List<com.knoldus.model.OrderLineItem>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -154,20 +165,55 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
   }
 
   /**
-   * Gets the value of the 'storeName' field.
-   * @return The value of the 'storeName' field.
+   * Gets the value of the 'nickName' field.
+   * @return Optional field represents the nickname of the customer
    */
-  public java.lang.CharSequence getStoreName() {
-    return storeName;
+  public java.lang.CharSequence getNickName() {
+    return nickName;
   }
 
 
   /**
-   * Sets the value of the 'storeName' field.
+   * Sets the value of the 'nickName' field.
+   * Optional field represents the nickname of the customer
    * @param value the value to set.
    */
-  public void setStoreName(java.lang.CharSequence value) {
-    this.storeName = value;
+  public void setNickName(java.lang.CharSequence value) {
+    this.nickName = value;
+  }
+
+  /**
+   * Gets the value of the 'store' field.
+   * @return The value of the 'store' field.
+   */
+  public com.knoldus.model.Store getStore() {
+    return store;
+  }
+
+
+  /**
+   * Sets the value of the 'store' field.
+   * @param value the value to set.
+   */
+  public void setStore(com.knoldus.model.Store value) {
+    this.store = value;
+  }
+
+  /**
+   * Gets the value of the 'orderLineItems' field.
+   * @return The value of the 'orderLineItems' field.
+   */
+  public java.util.List<com.knoldus.model.OrderLineItem> getOrderLineItems() {
+    return orderLineItems;
+  }
+
+
+  /**
+   * Sets the value of the 'orderLineItems' field.
+   * @param value the value to set.
+   */
+  public void setOrderLineItems(java.util.List<com.knoldus.model.OrderLineItem> value) {
+    this.orderLineItems = value;
   }
 
   /**
@@ -214,7 +260,11 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
     /** Id of the order */
     private int id;
     private java.lang.CharSequence name;
-    private java.lang.CharSequence storeName;
+    /** Optional field represents the nickname of the customer */
+    private java.lang.CharSequence nickName;
+    private com.knoldus.model.Store store;
+    private com.knoldus.model.Store.Builder storeBuilder;
+    private java.util.List<com.knoldus.model.OrderLineItem> orderLineItems;
 
     /** Creates a new Builder */
     private Builder() {
@@ -235,9 +285,20 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
         this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.storeName)) {
-        this.storeName = data().deepCopy(fields()[2].schema(), other.storeName);
+      if (isValidValue(fields()[2], other.nickName)) {
+        this.nickName = data().deepCopy(fields()[2].schema(), other.nickName);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.store)) {
+        this.store = data().deepCopy(fields()[3].schema(), other.store);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (other.hasStoreBuilder()) {
+        this.storeBuilder = com.knoldus.model.Store.newBuilder(other.getStoreBuilder());
+      }
+      if (isValidValue(fields()[4], other.orderLineItems)) {
+        this.orderLineItems = data().deepCopy(fields()[4].schema(), other.orderLineItems);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
     }
 
@@ -255,9 +316,18 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
         this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.storeName)) {
-        this.storeName = data().deepCopy(fields()[2].schema(), other.storeName);
+      if (isValidValue(fields()[2], other.nickName)) {
+        this.nickName = data().deepCopy(fields()[2].schema(), other.nickName);
         fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.store)) {
+        this.store = data().deepCopy(fields()[3].schema(), other.store);
+        fieldSetFlags()[3] = true;
+      }
+      this.storeBuilder = null;
+      if (isValidValue(fields()[4], other.orderLineItems)) {
+        this.orderLineItems = data().deepCopy(fields()[4].schema(), other.orderLineItems);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -345,42 +415,161 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
     }
 
     /**
-      * Gets the value of the 'storeName' field.
+      * Gets the value of the 'nickName' field.
+      * Optional field represents the nickname of the customer
       * @return The value.
       */
-    public java.lang.CharSequence getStoreName() {
-      return storeName;
+    public java.lang.CharSequence getNickName() {
+      return nickName;
     }
 
 
     /**
-      * Sets the value of the 'storeName' field.
-      * @param value The value of 'storeName'.
+      * Sets the value of the 'nickName' field.
+      * Optional field represents the nickname of the customer
+      * @param value The value of 'nickName'.
       * @return This builder.
       */
-    public com.knoldus.model.CoffeeOrder.Builder setStoreName(java.lang.CharSequence value) {
+    public com.knoldus.model.CoffeeOrder.Builder setNickName(java.lang.CharSequence value) {
       validate(fields()[2], value);
-      this.storeName = value;
+      this.nickName = value;
       fieldSetFlags()[2] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'storeName' field has been set.
-      * @return True if the 'storeName' field has been set, false otherwise.
+      * Checks whether the 'nickName' field has been set.
+      * Optional field represents the nickname of the customer
+      * @return True if the 'nickName' field has been set, false otherwise.
       */
-    public boolean hasStoreName() {
+    public boolean hasNickName() {
       return fieldSetFlags()[2];
     }
 
 
     /**
-      * Clears the value of the 'storeName' field.
+      * Clears the value of the 'nickName' field.
+      * Optional field represents the nickname of the customer
       * @return This builder.
       */
-    public com.knoldus.model.CoffeeOrder.Builder clearStoreName() {
-      storeName = null;
+    public com.knoldus.model.CoffeeOrder.Builder clearNickName() {
+      nickName = null;
       fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'store' field.
+      * @return The value.
+      */
+    public com.knoldus.model.Store getStore() {
+      return store;
+    }
+
+
+    /**
+      * Sets the value of the 'store' field.
+      * @param value The value of 'store'.
+      * @return This builder.
+      */
+    public com.knoldus.model.CoffeeOrder.Builder setStore(com.knoldus.model.Store value) {
+      validate(fields()[3], value);
+      this.storeBuilder = null;
+      this.store = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'store' field has been set.
+      * @return True if the 'store' field has been set, false otherwise.
+      */
+    public boolean hasStore() {
+      return fieldSetFlags()[3];
+    }
+
+    /**
+     * Gets the Builder instance for the 'store' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public com.knoldus.model.Store.Builder getStoreBuilder() {
+      if (storeBuilder == null) {
+        if (hasStore()) {
+          setStoreBuilder(com.knoldus.model.Store.newBuilder(store));
+        } else {
+          setStoreBuilder(com.knoldus.model.Store.newBuilder());
+        }
+      }
+      return storeBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'store' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public com.knoldus.model.CoffeeOrder.Builder setStoreBuilder(com.knoldus.model.Store.Builder value) {
+      clearStore();
+      storeBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'store' field has an active Builder instance
+     * @return True if the 'store' field has an active Builder instance
+     */
+    public boolean hasStoreBuilder() {
+      return storeBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'store' field.
+      * @return This builder.
+      */
+    public com.knoldus.model.CoffeeOrder.Builder clearStore() {
+      store = null;
+      storeBuilder = null;
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'orderLineItems' field.
+      * @return The value.
+      */
+    public java.util.List<com.knoldus.model.OrderLineItem> getOrderLineItems() {
+      return orderLineItems;
+    }
+
+
+    /**
+      * Sets the value of the 'orderLineItems' field.
+      * @param value The value of 'orderLineItems'.
+      * @return This builder.
+      */
+    public com.knoldus.model.CoffeeOrder.Builder setOrderLineItems(java.util.List<com.knoldus.model.OrderLineItem> value) {
+      validate(fields()[4], value);
+      this.orderLineItems = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'orderLineItems' field has been set.
+      * @return True if the 'orderLineItems' field has been set, false otherwise.
+      */
+    public boolean hasOrderLineItems() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'orderLineItems' field.
+      * @return This builder.
+      */
+    public com.knoldus.model.CoffeeOrder.Builder clearOrderLineItems() {
+      orderLineItems = null;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -391,7 +580,18 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
         CoffeeOrder record = new CoffeeOrder();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.storeName = fieldSetFlags()[2] ? this.storeName : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.nickName = fieldSetFlags()[2] ? this.nickName : (java.lang.CharSequence) defaultValue(fields()[2]);
+        if (storeBuilder != null) {
+          try {
+            record.store = this.storeBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("store"));
+            throw e;
+          }
+        } else {
+          record.store = fieldSetFlags()[3] ? this.store : (com.knoldus.model.Store) defaultValue(fields()[3]);
+        }
+        record.orderLineItems = fieldSetFlags()[4] ? this.orderLineItems : (java.util.List<com.knoldus.model.OrderLineItem>) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -428,7 +628,22 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
 
     out.writeString(this.name);
 
-    out.writeString(this.storeName);
+    out.writeString(this.nickName);
+
+    this.store.customEncode(out);
+
+    long size0 = this.orderLineItems.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (com.knoldus.model.OrderLineItem e0: this.orderLineItems) {
+      actualSize0++;
+      out.startItem();
+      e0.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
 
   }
 
@@ -441,10 +656,33 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
 
       this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
 
-      this.storeName = in.readString(this.storeName instanceof Utf8 ? (Utf8)this.storeName : null);
+      this.nickName = in.readString(this.nickName instanceof Utf8 ? (Utf8)this.nickName : null);
+
+      if (this.store == null) {
+        this.store = new com.knoldus.model.Store();
+      }
+      this.store.customDecode(in);
+
+      long size0 = in.readArrayStart();
+      java.util.List<com.knoldus.model.OrderLineItem> a0 = this.orderLineItems;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<com.knoldus.model.OrderLineItem>((int)size0, SCHEMA$.getField("orderLineItems").schema());
+        this.orderLineItems = a0;
+      } else a0.clear();
+      SpecificData.Array<com.knoldus.model.OrderLineItem> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.knoldus.model.OrderLineItem>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          com.knoldus.model.OrderLineItem e0 = (ga0 != null ? ga0.peek() : null);
+          if (e0 == null) {
+            e0 = new com.knoldus.model.OrderLineItem();
+          }
+          e0.customDecode(in);
+          a0.add(e0);
+        }
+      }
 
     } else {
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.id = in.readInt();
@@ -455,7 +693,34 @@ public class  CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase im
           break;
 
         case 2:
-          this.storeName = in.readString(this.storeName instanceof Utf8 ? (Utf8)this.storeName : null);
+          this.nickName = in.readString(this.nickName instanceof Utf8 ? (Utf8)this.nickName : null);
+          break;
+
+        case 3:
+          if (this.store == null) {
+            this.store = new com.knoldus.model.Store();
+          }
+          this.store.customDecode(in);
+          break;
+
+        case 4:
+          long size0 = in.readArrayStart();
+          java.util.List<com.knoldus.model.OrderLineItem> a0 = this.orderLineItems;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<com.knoldus.model.OrderLineItem>((int)size0, SCHEMA$.getField("orderLineItems").schema());
+            this.orderLineItems = a0;
+          } else a0.clear();
+          SpecificData.Array<com.knoldus.model.OrderLineItem> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.knoldus.model.OrderLineItem>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              com.knoldus.model.OrderLineItem e0 = (ga0 != null ? ga0.peek() : null);
+              if (e0 == null) {
+                e0 = new com.knoldus.model.OrderLineItem();
+              }
+              e0.customDecode(in);
+              a0.add(e0);
+            }
+          }
           break;
 
         default:

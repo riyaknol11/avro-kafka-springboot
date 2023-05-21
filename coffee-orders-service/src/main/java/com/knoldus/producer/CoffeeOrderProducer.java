@@ -1,6 +1,6 @@
 package com.knoldus.producer;
 
-import com.knoldus.model.CoffeeOrder;
+import com.knoldus.model.*;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -38,5 +38,4 @@ public class CoffeeOrderProducer {
         log.info("recordMetaData : " + recordMetaData);
 
     }
-
 }
